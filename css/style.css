@@ -1,12 +1,13 @@
 @charset "UTF-8";
 
 html{
+  font-size: 62.5%;
   min-width: inherit;
 }
 
 header {
   width: 100%;
-  height: 12%;
+  height: 200px;
   position: fixed;
   top: 0;
   left: 0;
@@ -20,7 +21,7 @@ header {
 form input[type="text"], select, button {
     border: 1px #C5C5C5 solid;
     background:  #dcd9d0;
-    font: 14px/35px Tahoma, Arial, sans-serif;
+    font: 2.0rem/2.2rem Tahoma, Arial, sans-serif;
     color: #8A8A8A;
 }
 
@@ -57,4 +58,61 @@ form button[type='submit'] {
 
 form input[type="text"].error, select.error {
     border-color: #ff4343;
+}
+
+#taskTable{
+  width: 100%;
+  position: fixed;
+  top: 240px;
+  left: 0;
+
+  border-collapse: collapse;
+  border: 0px solid #494430;
+  font: 2.0rem/2.2rem Tahoma, Arial, sans-serif;
+}
+
+#taskTable thead {
+  background: #494430;
+  color: #cccabc;
+  text-align: left;
+}
+
+#taskTable tbody {
+  background: #ffffff;
+  color: #797979;
+  text-align: left;
+}
+
+#taskTable thead th:first-child {
+  width: 60%;
+}
+
+#taskTable thead th:last-child {
+  width: 20%;
+}
+
+#taskTable #checkBox{
+  display: block;
+  fill: #f6982e;
+  float: left;
+}
+
+#taskTable #trash-can{
+  position: fixed;
+  display: block;
+  fill: #cfcfcf;
+  right: 10%;
+}
+
+#taskTable tr {
+  height: 7vh;
+  border-bottom: 1px solid  #494430;
+}
+
+#taskTable tr th:first-child{
+  padding-left: 25px;
+}
+
+#taskTable tr td:first-child{
+  padding-left: 25px;
 }
