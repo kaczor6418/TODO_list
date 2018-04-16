@@ -91,17 +91,29 @@ form input[type="text"].error, select.error {
   width: 20%;
 }
 
-#taskTable #checkBox{
-  display: block;
+#taskTable .checkBox{
   fill: #f6982e;
   float: left;
 }
 
-#taskTable #trash-can{
+#taskTable .changeColor.done{
+  opacity: 1;
+}
+
+#taskTable .checkBox:hover{
+  fill: #741d1d;
+  cursor: pointer;
+}
+
+#taskTable .trash-can{
   position: fixed;
-  display: block;
   fill: #cfcfcf;
   right: 10%;
+}
+
+#taskTable .trash-can:hover{
+  fill: #741d1d;
+  cursor: pointer;
 }
 
 #taskTable tr {
