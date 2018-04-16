@@ -1,11 +1,14 @@
 (function() {
-  var check = document.querySelector(".checkBox");
+  var check = document.querySelector(".checkBox"),
+      counter = true;
 
   check.addEventListener("click", function (e) {
-    if(check.querySelector(".changeColor").style.opacity === "0"){
-      check.querySelector(".changeColor").style.opacity = "1";
+    if(counter){
+      check.querySelector("path").classList.add("done");
+      counter = false;
     } else {
-      check.querySelector(".changeColor").style.opacity = "0";
+      check.querySelector("path").classList.remove("done");
+      counter = true;
     }
   },false);
 })();

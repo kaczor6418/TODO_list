@@ -92,8 +92,11 @@ form input[type="text"].error, select.error {
 }
 
 #taskTable .checkBox{
+  display: block;
+  margin: auto;
   fill: #f6982e;
   float: left;
+  position: relative;
 }
 
 #taskTable .changeColor.done{
@@ -101,14 +104,12 @@ form input[type="text"].error, select.error {
 }
 
 #taskTable .checkBox:hover{
-  fill: #741d1d;
   cursor: pointer;
 }
 
 #taskTable .trash-can{
-  position: fixed;
+  transform: scale(0.7, 0.7);
   fill: #cfcfcf;
-  right: 10%;
 }
 
 #taskTable .trash-can:hover{
