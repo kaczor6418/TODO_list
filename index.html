@@ -7,8 +7,8 @@
 </head>
 <body>
   <header id="new-task-container">
-    <form>
-        <input type="text" placeholder="Enter an activity..." name="task-name">
+    <form id="validation">
+        <input type="text" placeholder="Enter an activity..." data-error="Enter an activity" name="task-name">
         <select name="Chose priority" data-error="Chose priority type">
             <option value="" disabled selected>- Chose priority -</option>
             <option value="lvl1">High</option>
@@ -20,6 +20,6 @@
         </button>
     </form>
   </header>
-    <script src="js/scripts.js" defer></script>
+    <script src="js/validation_form.js" defer></script>
 </body>
 </html>

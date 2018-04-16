@@ -56,5 +56,5 @@ form button[type='submit'] {
 }
 
 form input[type="text"].error, select.error {
-    border-color: #FFA9C7;
+    border-color: #ff4343;
 }
