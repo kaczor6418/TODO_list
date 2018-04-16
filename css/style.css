@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+html{
+  min-width: inherit;
+}
+
+header {
+  width: 100%;
+  height: 12%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  background: #494430;
+  box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.75);
+  padding: 4%;
+  box-sizing: border-box;
+}
+
+form input[type="text"], select, button {
+    border: 1px #C5C5C5 solid;
+    background:  #dcd9d0;
+    font: 14px/35px Tahoma, Arial, sans-serif;
+    color: #8A8A8A;
+}
+
+form input[type="text"] {
+    display: block;
+    width: 60%;
+    height: 50px;
+    padding: 0 15px;
+    margin: 0 20px 20px 0;
+    float: left;
+}
+
+form select {
+    width: 20%;
+    height: 50px;
+    padding: 0 15px;
+
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+form button[type='submit'] {
+    width: 13%;
+    height: 50px;
+    float: right;
+    border: none;
+    background:  #9ceaa2;
+    padding-top: 9px;
+
+    cursor: pointer;
+
+    color: #222522;
+}
+
+form input[type="text"].error, select.error {
+    border-color: #FFA9C7;
+}
