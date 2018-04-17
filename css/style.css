@@ -107,6 +107,10 @@ form input[type="text"].error, select.error {
   cursor: pointer;
 }
 
+#taskTable .checkBox path.done{
+  opacity: 1;
+}
+
 #taskTable .delete{
   transform: scale(2.7, 2.7);
   padding-top: 3px;
