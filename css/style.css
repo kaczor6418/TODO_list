@@ -51,9 +51,14 @@ form button[type='submit'] {
     background:  #9ceaa2;
     padding-top: 9px;
 
+    transition: background 0.2s ease;
     cursor: pointer;
 
     color: #222522;
+}
+
+form button:hover{
+  background: #3ebe48;
 }
 
 form input[type="text"].error, select.error {
@@ -88,7 +93,7 @@ form input[type="text"].error, select.error {
 }
 
 #taskTable thead th:last-child {
-  width: 20%;
+  width: 7%;
 }
 
 #taskTable .checkBox{
@@ -96,23 +101,19 @@ form input[type="text"].error, select.error {
   margin: auto;
   fill: #f6982e;
   float: left;
-  position: relative;
-}
-
-#taskTable .changeColor.done{
-  opacity: 1;
 }
 
 #taskTable .checkBox:hover{
   cursor: pointer;
 }
 
-#taskTable .trash-can{
-  transform: scale(0.7, 0.7);
+#taskTable .delete{
+  transform: scale(2.7, 2.7);
+  padding-top: 3px;
   fill: #cfcfcf;
 }
 
-#taskTable .trash-can:hover{
+#taskTable .delete:hover{
   fill: #741d1d;
   cursor: pointer;
 }
@@ -128,4 +129,8 @@ form input[type="text"].error, select.error {
 
 #taskTable tr td:first-child{
   padding-left: 25px;
+}
+
+svg{
+  transition: fill 0.2s ease;
 }
