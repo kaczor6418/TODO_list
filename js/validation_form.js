@@ -30,7 +30,7 @@ function renderTodoList() {
     // If all elements of the data object are empty, the function won't render anything
   if (!data.todo.taskName.length && !data.completed.taskName.length) return;
 
-  for (var i = 0; i < data.completed.taskName.length; i++) {
+  for (let i = 0; i < data.completed.taskName.length; i++) {
     var completedActivity1,
         completedPriority1;
 
@@ -40,12 +40,12 @@ function renderTodoList() {
     addActivity(completedActivity1, completedPriority1);
     document.querySelector(".checkBox").querySelector("path").classList.add("Done");
   }
-  for (var j = 0; j < data.todo.taskName.length; j++) {
+  for (let i = 0; i < data.todo.taskName.length; i++) {
     var completedActivity2,
         completedPriority2;
 
-        completedActivity2 = data.todo.taskName[j];
-        completedPriority2 = data.todo.taskPriority[j];
+        completedActivity2 = data.todo.taskName[i];
+        completedPriority2 = data.todo.taskPriority[i];
 
     addActivity(completedActivity2, completedPriority2);
   }
@@ -87,6 +87,7 @@ function addActivity(activity, priority) {
 
             // Change the state of activity
             cell3.querySelector("path").classList.toggle("Done");
+
           } else {
             // Save state of activity in data
             let index = data.todo.taskName.indexOf(activity);
@@ -97,6 +98,7 @@ function addActivity(activity, priority) {
 
             // Change the state of activity
             cell3.querySelector("path").classList.toggle("Done");
+
           }
           dataObjectUpdate();
       },false);
@@ -111,14 +113,18 @@ function addActivity(activity, priority) {
           let index = data.completed.taskName.indexOf(activity);
           data.completed.taskName.splice(index, 1);
           data.completed.taskPriority.splice(index, 1);
-          removeTaskFromSortingArray(index);
+
+          // Delete activity from sorrtingTable
+          trsArr.splice(index, 1);
 
         } else {
           // Delete activity from data.completed
           let index = data.todo.taskName.indexOf(activity);
           data.todo.taskName.splice(index, 1);
           data.todo.taskPriority.splice(index, 1);
-          removeTaskFromSortingArray(index);
+
+          // Delete activity from sorrtingTable
+          trsArr.splice(index, 1);
         }
         dataObjectUpdate();
         activityTable.removeChild(toRemove);
@@ -135,6 +141,8 @@ function addActivity(activity, priority) {
 function isEmpty(field) {
   return field.value !== "";
 }
+
+
 
 // Add click event for add activity
 form.addEventListener("submit", function (e) {

@@ -135,6 +135,23 @@ form input[type="text"].error, select.error {
   padding-left: 25px;
 }
 
+#taskTable th {
+    position: relative;
+    cursor: pointer;
+}
+
+#taskTable th:after {
+    content: "";
+    display: none;
+    width: 0;
+    height: 0;
+    margin-top: -5px;
+
+    position: absolute;
+    top: 50%;
+    right: 20px;
+}
+
 #taskTable th.asc:after {
     display: block;
     border-style: solid;
