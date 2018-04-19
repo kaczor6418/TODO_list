@@ -33,18 +33,25 @@
     </tbody>
   </table>
   <footer>
-    <div id="rows-per-page">
-      Rows per page:
-      <select>
-          <option value="" disabled selected></option>
-          <option value="5">5</option>
-          <option value="10">10</option>
-          <option value="15">15</option>
-      </select>
-    </div>
-    <div id="next-prev">
-
-    </div>
+    <table>
+      <thead>
+               <tr >
+                   <th>
+                     Rows per page:
+                     <select id="rows-per-page">
+                         <option value="5" disabled selected>5</option>
+                         <option value="5">5</option>
+                         <option value="10">10</option>
+                         <option value="15">15</option>
+                     </select>
+                   </th>
+                   <th id="page-of">
+                     <svg id="prev" enable-background="new 0 0 24 24" version="1.0" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><polyline fill="none" points="15.5,21 6.5,12 15.5,3 " stroke="#000000" stroke-miterlimit="10" stroke-width="2"/></svg>
+                     <svg id="next" enable-background="new 0 0 24 24" version="1.0" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><polyline fill="none" points="8.5,3 17.5,12 8.5,21 " stroke="#000000" stroke-miterlimit="10" stroke-width="2"/></svg>
+                   </th>
+               </tr>
+     </thead>
+    </table>
   </footer>
     <script src="js/sorting_the_array.js" defer></script>
     <script src="js/validation_form.js" defer></script>

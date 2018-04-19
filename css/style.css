@@ -3,12 +3,13 @@
 html{
   font-size: 62.5%;
   min-width: inherit;
+  background: #c9cacc;
 }
 
 header {
   width: 100%;
   height: 200px;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   z-index: 5;
@@ -67,12 +68,10 @@ form input[type="text"].error, select.error {
 
 #taskTable{
   width: 100%;
-  position: fixed;
-  top: 240px;
-  left: 0;
+  margin-top: 240px;
 
   border-collapse: collapse;
-  border: 0px solid #494430;
+  border: 1px solid #494430;
   font: 2.0rem/2.2rem Tahoma, Arial, sans-serif;
 }
 
@@ -123,6 +122,7 @@ form input[type="text"].error, select.error {
 }
 
 #taskTable tr {
+  display: flex: 1 1 auto;;
   height: 7vh;
   border-bottom: 1px solid  #494430;
 }
@@ -169,10 +169,35 @@ form input[type="text"].error, select.error {
 footer{
   width: 100%;
   height: 7vh;
-  position: fixed;
-  left: 0;
-  bottom: 0;
+  background: #ffffff;
   border-top: 0.5px solid  #494430;
+}
+
+footer table{
+  width: 100%;
+  display: block;
+  padding-left: 50%;
+  box-sizing: border-box;
+  margin: auto;
+}
+
+#rows-per-page{
+  width: 10%;
+  border: 0;
+  background: #ffffff;
+  font: 1.0rem/1.2rem Tahoma, Arial, sans-serif;
+}
+
+#page-of{
+  width: 10%;
+}
+
+footer table #page-of #next{
+  height: 13%;
+}
+
+footer table #page-of #prev{
+  height: 13%;
 }
 
 svg{
