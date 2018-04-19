@@ -21,7 +21,9 @@ var isDone = '<svg class="checkBox" width="30" height="30" xmlns="http://www.w3.
     deleTask = '<svg class="delete" width="12.7" height="12.7" xmlns="http://www.w3.org/2000/svg"> <g> <title>background</title> <rect fill="none" height="402" width="582" y="-1" x="-1"/> </g> <g> <title>Layer 1</title> <path clip-rule="nonzero" fill-rule="evenodd" stroke-width="1.411111" stroke-miterlimit="4" stroke-dashoffset="0" d="m3.88056,2.822212l-1.05834,1.05834l2.46945,2.46944l-2.46945,2.46944l1.05834,1.05834l2.46944,-2.46945l2.46944,2.46945l1.05834,-1.05834l-2.46945,-2.46944l2.46945,-2.46944l-1.05834,-1.05834l-2.46944,2.46945l-2.46944,-2.46945z"/> </g></svg>';
 
 renderTodoList();
-
+var copyOfCurrentTasks = document.querySelector("tbody");
+copyOfCurrentTasks = copyOfCurrentTasks.querySelectorAll("tr");
+initSortElements(copyOfCurrentTasks);
 // Render todo LIST of all activities that user added to the taskTable
 function renderTodoList() {
 
@@ -85,7 +87,6 @@ function addActivity(activity, priority) {
 
             // Change the state of activity
             cell3.querySelector("path").classList.toggle("Done");
-
           } else {
             // Save state of activity in data
             let index = data.todo.taskName.indexOf(activity);
@@ -110,12 +111,14 @@ function addActivity(activity, priority) {
           let index = data.completed.taskName.indexOf(activity);
           data.completed.taskName.splice(index, 1);
           data.completed.taskPriority.splice(index, 1);
+          removeTaskFromSortingArray(index);
 
         } else {
           // Delete activity from data.completed
           let index = data.todo.taskName.indexOf(activity);
           data.todo.taskName.splice(index, 1);
           data.todo.taskPriority.splice(index, 1);
+          removeTaskFromSortingArray(index);
         }
         dataObjectUpdate();
         activityTable.removeChild(toRemove);
@@ -172,6 +175,9 @@ form.addEventListener("submit", function (e) {
               data.todo.taskPriority.push(taskPriority);
               dataObjectUpdate();
     addActivity(taskName,taskPriority);
+
+// Add task to the sorrting table
+    addTaskToSortingArray(document.querySelector("tbody tr:first-child"));
   }
 
 }, false)
