@@ -107,6 +107,10 @@ form input[type="text"].error, select.error {
   cursor: pointer;
 }
 
+#taskTable .checkBox .Done{
+  opacity: 1;
+}
+
 #taskTable .delete{
   transform: scale(2.7, 2.7);
   padding-top: 3px;
@@ -129,6 +133,15 @@ form input[type="text"].error, select.error {
 
 #taskTable tr td:first-child{
   padding-left: 25px;
+}
+
+footer{
+  width: 100%;
+  height: 7vh;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  border-top: 0.5px solid  #494430;
 }
 
 svg{

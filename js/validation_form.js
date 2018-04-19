@@ -1,6 +1,12 @@
 var data = (localStorage.getItem("todoList")) ?  JSON.parse(localStorage.getItem("todoList")):{
-  completed: [],
-  todo: []
+  completed: {
+    taskName: [],
+    taskPriority: []
+  } ,
+  todo:{
+    taskName: [],
+    taskPriority: []
+  }
 };
 
 (function() {
@@ -16,21 +22,30 @@ var isDone = '<svg class="checkBox" width="30" height="30" xmlns="http://www.w3.
 
 renderTodoList();
 
-// Render TODO LIST of all activities that user added to the taskTable
+// Render todo LIST of all activities that user added to the taskTable
 function renderTodoList() {
 
     // If all elements of the data object are empty, the function won't render anything
-  if (!data.todo.length && !data.completed.length) return;
+  if (!data.todo.taskName.length && !data.completed.taskName.length) return;
 
-  for (let i = 0; i < data.completed.length; i++) {
-    let value = data.completed[i];
-    console.log(value);
-    console.log(data.completed.length);
+  for (var i = 0; i < data.completed.taskName.length; i++) {
+    var completedActivity1,
+        completedPriority1;
+
+        completedActivity1 = data.completed.taskName[i];
+        completedPriority1 = data.completed.taskPriority[i];
+
+    addActivity(completedActivity1, completedPriority1);
+    document.querySelector(".checkBox").querySelector("path").classList.add("Done");
   }
-  for (let i = 0; i < data.todo.length; i++) {
-    let value = data.todo[i];
-    console.log(value);
-    console.log(data.completed.length);
+  for (var j = 0; j < data.todo.taskName.length; j++) {
+    var completedActivity2,
+        completedPriority2;
+
+        completedActivity2 = data.todo.taskName[j];
+        completedPriority2 = data.todo.taskPriority[j];
+
+    addActivity(completedActivity2, completedPriority2);
   }
 }
 
@@ -42,11 +57,9 @@ function dataObjectUpdate() {
 // Adds a new activity to the TODOlist
 function addActivity(activity, priority) {
   var activityTable = document.querySelector("tbody"),
-      row = activityTable.insertRow(0),
-      counter = true;
+      row = activityTable.insertRow(0);
 
-  let item = activity + " " + priority,
-      cell1 = row.insertCell(0),
+  let cell1 = row.insertCell(0),
       cell2 = row.insertCell(1),
       cell3 = row.insertCell(2);
       cell4 = row.insertCell(3);
@@ -61,23 +74,28 @@ function addActivity(activity, priority) {
 
 // Add click event for change the state of activity(whether the task is done or not)
       cell3.addEventListener("click", function (e) {
-          if(counter){
+          if(cell3.querySelector("path").classList.contains("Done")){
 
-            // Save state of item in data
-            data.todo.splice(data.todo.indexOf(item), 1);
-            data.completed.push(item);
-
-            // Change the state of activity
-            cell3.querySelector("path").style.opacity = "1";
-            counter = false;
-          } else {
             // Save the state of activity in data
-            data.completed.splice(data.completed.indexOf(item), 1);
-            data.todo.push(item);
+            let index = data.completed.taskName.indexOf(activity);
+            data.completed.taskName.splice(index, 1);
+            data.completed.taskPriority.splice(index, 1);
+            data.todo.taskName.push(activity);
+            data.todo.taskPriority.push(priority);
 
             // Change the state of activity
-            cell3.querySelector("path").style.opacity = "0";
-            counter = true;
+            cell3.querySelector("path").classList.toggle("Done");
+
+          } else {
+            // Save state of activity in data
+            let index = data.todo.taskName.indexOf(activity);
+            data.todo.taskName.splice(index, 1);
+            data.todo.taskPriority.splice(index, 1);
+            data.completed.taskName.push(activity);
+            data.completed.taskPriority.push(priority);
+
+            // Change the state of activity
+            cell3.querySelector("path").classList.toggle("Done");
           }
           dataObjectUpdate();
       },false);
@@ -86,13 +104,18 @@ function addActivity(activity, priority) {
       cell4.addEventListener("click", function (e) {
         let toRemove = this.parentNode;
 
-        if(counter){
+        if(cell3.querySelector("path").classList.contains("Done")){
 
-          // Delete activity from data.completed
-          data.todo.splice(data.todo.indexOf(item), 1);
-        } else {
           // Delete activity from data.todo
-          data.completed.splice(data.completed.indexOf(item), 1);
+          let index = data.completed.taskName.indexOf(activity);
+          data.completed.taskName.splice(index, 1);
+          data.completed.taskPriority.splice(index, 1);
+
+        } else {
+          // Delete activity from data.completed
+          let index = data.todo.taskName.indexOf(activity);
+          data.todo.taskName.splice(index, 1);
+          data.todo.taskPriority.splice(index, 1);
         }
         dataObjectUpdate();
         activityTable.removeChild(toRemove);
@@ -103,10 +126,6 @@ function addActivity(activity, priority) {
       cell2.innerHTML = priority;
       cell3.innerHTML = isDone;
       cell4.innerHTML = deleTask;
-
-// Save activity and priority in data
-      data.todo.push(item);
-      dataObjectUpdate();
 }
 
 // Checks the form field is empty
@@ -148,6 +167,10 @@ form.addEventListener("submit", function (e) {
   }else {
     var taskName = enterActivity.value,
         taskPriority = selectPriority.value;
+        // Save activity and priority in data
+              data.todo.taskName.push(taskName);
+              data.todo.taskPriority.push(taskPriority);
+              dataObjectUpdate();
     addActivity(taskName,taskPriority);
   }
 
