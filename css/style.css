@@ -166,37 +166,31 @@ form input[type="text"].error, select.error {
     border-color: #E2E2E2 transparent transparent transparent;
 }
 
-footer{
+#footer{
   width: 100%;
   height: 7vh;
   background: #ffffff;
   border-top: 0.5px solid  #494430;
 }
-
-footer table{
-  width: 100%;
-  display: block;
-  padding-left: 50%;
-  box-sizing: border-box;
-  margin: auto;
+#footer #rows{
+  text-align: right;
 }
 
-#rows-per-page{
-  width: 10%;
+#footer #rows-per-page{
+  width: 60%;
   border: 0;
   background: #ffffff;
-  font: 1.0rem/1.2rem Tahoma, Arial, sans-serif;
 }
 
-#page-of{
+#footer #page-of{
   width: 10%;
 }
 
-footer table #page-of #next{
+#footer #page-of #next{
   height: 13%;
 }
 
-footer table #page-of #prev{
+#footer #page-of #prev{
   height: 13%;
 }
 
