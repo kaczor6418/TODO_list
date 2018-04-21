@@ -2,9 +2,6 @@ var trsArr; //All current taskTable activities
 var thsArr; // Thead elements of task table
 var table;
 
-// it creates a fragment of a document that will be used to substitute an un-sorted table with a sorted
-var documentFragment = document.createDocumentFragment();
-
 // Add all task to the sorting table
 function initSortElements(taskTable){
     table = document.querySelector("#taskTable"),
@@ -16,9 +13,9 @@ function initSortElements(taskTable){
     trsArr = makeArray(taskTable);
 
     // Add onclick event to the thead taskTable
-    ths[0].onclick = sortByTask;
-    ths[1].onclick = sortByTask;
-    ths[2].onclick = sortByTask;
+    ths[0].onclick = sortBy;
+    ths[1].onclick = sortBy;
+    //ths[2].onclick = sortByTask;
 }
 
     // Removes sorting mark from element of table
@@ -44,6 +41,10 @@ function initSortElements(taskTable){
 
     // Replace the unsorted table by sorted
     function toggleTaskTable() {
+
+      // it creates a fragment of a document that will be used to substitute an un-sorted table with a sorted
+      let documentFragment = document.createDocumentFragment();
+
       trsArr.forEach(function(trTask) {
         documentFragment.appendChild(trTask);
       }, false);
@@ -51,7 +52,7 @@ function initSortElements(taskTable){
     }
 
     // Sorting function
-    function sortByTask(e) {
+    function sortBy(e) {
       let target = e.target,
           index = thsArr.indexOf(target), // This will check which column we clicked
 
@@ -67,23 +68,15 @@ function initSortElements(taskTable){
             tdB = b.children[index].textContent;
 
         // Assumptions needed to sort the priority
-        if(tdA === "High") tdA = 2;
-        if(tdA === "Medium") tdA = 1;
-        if(tdA === "Low") tdA = 0;
-        if(tdB === "High") tdB = 2;
-        if(tdB === "Medium") tdB = 1;
-        if(tdB === "Low") tdB = 0;
-
-        // Assumptions needed to sort the state
-        if(index === 3){
-          if(trsArr[index].querySelector("path").classList.contains("Done")){
-            tdA = 0;
-            tdB = 0;
-          }else {
-            tdA = 1;
-            tdB = 1;
-          }
+        if (index === 1) {
+          if(tdA === "High") tdA = 2;
+          if(tdA === "Medium") tdA = 1;
+          if(tdA === "Low") tdA = 0;
+          if(tdB === "High") tdB = 2;
+          if(tdB === "Medium") tdB = 1;
+          if(tdB === "Low") tdB = 0;
         }
+
 
         // Sort function
         if(tdA < tdB){
