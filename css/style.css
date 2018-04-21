@@ -186,11 +186,13 @@ form input[type="text"].error, select.error {
 }
 
 #footer #next-prev{
+  cursor: pointer;
   width: 10%;
 }
 
 
 #footer #next-prev #next{
+  cursor: pointer;
   padding-left: 10px;
   height: 13%;
 }

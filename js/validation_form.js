@@ -64,19 +64,11 @@ function dataObjectUpdate() {
 function addActivity(activity, priority, isDone) {
   var activityTable = document.querySelector("tbody"),
       row = activityTable.insertRow(0);
-
+      console.log("adding");
   let cell1 = row.insertCell(0), // Activity
       cell2 = row.insertCell(1), // Priority
       cell3 = row.insertCell(2); // State of activity
       cell4 = row.insertCell(3); // Delete mark
-
-// Reset enterActivity and selectPriority values
-        if(enterActivity.value !== ""){
-          enterActivity.value = "";
-        }
-        if(selectPriority.value !== ""){
-          selectPriority.value = "";
-        }
 
 // Add click event for change the state of activity(whether the task is done or not)
       cell3.addEventListener("click", function (e) {
@@ -118,6 +110,8 @@ function addActivity(activity, priority, isDone) {
 
         // Updating localStorage
         dataObjectUpdate();
+
+        currentActivities--;
 
         activityTable.removeChild(toRemove);
       },false);
@@ -188,7 +182,22 @@ form.addEventListener("submit", function (e) {
         dataObjectUpdate();
 
         // Add new activity
+        if(currentActivities < rowsNumberVal){
+          addActivity(taskName,taskPriority,notDone);
+          currentActivities++;
+        }else {
+        lastActivity = document.querySelector("tbody");
+        lastActivity.removeChild(lastActivity.childNodes[rowsNumberVal]);
         addActivity(taskName,taskPriority,notDone);
+        }
+
+        // Reset enterActivity and selectPriority values
+        if(enterActivity.value !== ""){
+          enterActivity.value = "";
+        }
+        if(selectPriority.value !== ""){
+          selectPriority.value = "";
+        }
 
         // Add task to the sorrting table
         addTaskToSortingArray(document.querySelector("tbody tr:first-child"));
