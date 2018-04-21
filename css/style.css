@@ -171,27 +171,32 @@ form input[type="text"].error, select.error {
   height: 7vh;
   background: #ffffff;
   border-top: 0.5px solid  #494430;
+  color: #000000;
 }
+
 #footer #rows{
   text-align: right;
 }
 
 #footer #rows-per-page{
-  width: 60%;
+  width: 30%;
   border: 0;
   background: #ffffff;
+  color: #000000;
 }
 
-#footer #page-of{
+#footer #next-prev{
   width: 10%;
 }
 
-#footer #page-of #next{
+
+#footer #next-prev #next{
+  padding-left: 10px;
   height: 13%;
 }
 
-#footer #page-of #prev{
-  height: 13%;
+#footer #next-prev #prev{
+  height: 14%;
 }
 
 svg{

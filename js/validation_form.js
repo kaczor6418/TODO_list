@@ -5,9 +5,6 @@ var data = (localStorage.getItem("todoList")) ?  JSON.parse(localStorage.getItem
   state: []
 };
 
-// Function is called when the page starts
-(function() {
-
 var form = document.querySelector("#validation"),
     fields = form.querySelectorAll("[data-error]"),
     enterActivity = form.querySelector("input"),
@@ -28,6 +25,10 @@ copyOfCurrentTasks = copyOfCurrentTasks.querySelectorAll("tr");
 // Initializing sorting array
 initSortElements(copyOfCurrentTasks);
 
+// Initializing next and prev buttons
+initNextPrev(data);
+pageOf(data,5,0);
+
 // Render todo LIST of all activities that user added to the taskTable
 function renderTodoList() {
 
@@ -35,7 +36,7 @@ function renderTodoList() {
   if (!data.taskName.length ) return;
 
   // Rows per page that user chose
-  let rowsPerPage = document.querySelector("#rows-per-page").value;
+var rowsPerPage = document.querySelector("#rows-per-page").value;
 
   // Renders all un-completed the activities we added during the last session
   for (let i = 0; i < data.taskName.length; i++) {
@@ -46,10 +47,9 @@ function renderTodoList() {
         renderPriority = data.taskPriority[i];
         renderState = data.state[i];
 
-      /*  if (i <= rowsPerPage) {
-          next.taskName.push(completedActivity2);
-          next.taskPriority.push(completedActivity2);
-        }*/
+        if (i >= rowsPerPage) {
+          return;
+        }
 
     addActivity(renderActivity, renderPriority, renderState);
   }
@@ -198,4 +198,3 @@ form.addEventListener("submit", function (e) {
   }
 
 }, false)
-})();
