@@ -36,7 +36,7 @@ function renderTodoList() {
   if (!data.taskName.length ) return;
 
   // Rows per page that user chose
-var rowsPerPage = document.querySelector("#rows-per-page").value;
+let rowsPerPage = document.querySelector("#rows-per-page").value;
 
   // Renders all un-completed the activities we added during the last session
   for (let i = 0; i < data.taskName.length; i++) {

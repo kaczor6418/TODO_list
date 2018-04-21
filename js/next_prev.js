@@ -4,10 +4,12 @@ var rowsNumberVal = 5,
     currentPage;
 
 function renderSelectedRowsNumber(data,rows) {
-  let next = document.querySelectorAll("#next-prev svg:first-child"),
-      prev = document.querySelectorAll("#next-prev svg:last-child");
-
-
+  startIndex--;
+  pageOf(data, rowsNumberVal, startIndex);
+  let old = document.querySelector("#taskTable tbody tr").parentNode;
+      old.remove();
+      
+  activityTable.removeChild(toRemove);
 }
 
 function pageOf(data, rows, index) {
@@ -26,10 +28,21 @@ let substitution = document.querySelector("#page-of");
 
 function initNextPrev(data){
 
-  var rowsNumber = document.querySelector("#rows-per-page");
-  // Add click event
-        rowsNumber.addEventListener("click", function (e) {
-          rowsNumberVal = document.querySelector("#rows-per-page").value;
-          pageOf(data,rowsNumberVal, startIndex);
-        },false);
+  var button = document.querySelectorAll("#next-prev svg"),
+      rowsNumber = document.querySelector("#rows-per-page");
+
+      // Add click event to change the number of rows
+      rowsNumber.addEventListener("click", function (e) {
+        rowsNumberVal = document.querySelector("#rows-per-page").value;
+        pageOf(data,rowsNumberVal, startIndex);
+      },false);
+
+      // Add click event to change page(prev)
+      button[0].addEventListener("click", function () {
+        if(startIndex < 2) return;
+
+        let currentActivities = (document.querySelectorAll("#taskTable tbody tr").length) - 1;
+        var index = (rowsNumberVal * currentPage) - (2 * currentActivities)
+
+      }, false);
 }
