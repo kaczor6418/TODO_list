@@ -97,22 +97,29 @@ function addActivity(activity, priority, isDone) {
 
 // Add click event for removing activity(whether the task is done or not)
       cell4.addEventListener("click", function (e) {
+        console.log("usun");
         let toRemove = this.parentNode;
 
-          // Delete activity from data.completed
-          let index = data.taskName.indexOf(activity);
-          data.taskName.splice(index, 1);
-          data.taskPriority.splice(index, 1);
-          data.state.splice(index, 1);
-
-          // Delete activity from sorrtingTable
-          trsArr.splice(index, 1);
+        // Delete activity from data.completed
+        let index = data.taskName.indexOf(activity);
+        data.taskName.splice(index, 1);
+        data.taskPriority.splice(index, 1);
+        data.state.splice(index, 1);
 
         // Updating localStorage
         dataObjectUpdate();
 
         // Reduces the number of tasks currently on the page
         currentActivities--;
+
+        if(currentActivities < rowsNumberVal){
+          if (data.taskName.length > currentActivities) {
+            let newTask = currentPage*currentActivities - currentActivities;
+            console.log(newTask);
+            addActivity(data.taskName[newTask],data.taskPriority[newTask],data.state[newTask]);
+          }
+          currentActivities++;
+        }
 
         // Delete activity from taskTable
         activityTable.removeChild(toRemove);

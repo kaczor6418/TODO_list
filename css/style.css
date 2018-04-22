@@ -194,11 +194,11 @@ form input[type="text"].error, select.error {
 #footer #next-prev #next{
   cursor: pointer;
   padding-left: 10px;
-  height: 13%;
+  height: 20px;
 }
 
 #footer #next-prev #prev{
-  height: 14%;
+  height: 20px;
 }
 
 svg{
