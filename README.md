@@ -1,8 +1,6 @@
 # TODO List
 
-Todo list with additional options like:
-  -sort by columns
-  -choosing how many rows to display on the page
+Todo list with additional options like: sort by columns, choosing how many rows to display on the page...
 
 ## Getting Started
 
