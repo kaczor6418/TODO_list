@@ -75,7 +75,6 @@ function isRepeated(task) {
   return (data.taskName.indexOf(task) === -1);
 }
 
-
 // Add click event for add activity
 form.addEventListener("submit", function (e) {
   e.preventDefault();
