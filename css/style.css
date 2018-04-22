@@ -140,6 +140,10 @@ form input[type="text"].error, select.error {
     cursor: pointer;
 }
 
+#taskTable th:last-child {
+    cursor: default;
+}
+
 #taskTable th:after {
     content: "";
     display: none;
@@ -198,7 +202,7 @@ form input[type="text"].error, select.error {
 }
 
 #footer #next-prev #prev{
-  height: 20px;
+  height: 20px  ;
 }
 
 svg{
