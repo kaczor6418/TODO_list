@@ -4,7 +4,7 @@ Todo list with additional options like: sort by columns, choosing how many rows 
 
 ## Getting Started
 
-You have to go into TODO_list folder and open index.html using web browser.
+You have to go to the TODO_list folder and open index.html using web browser.
 Due to the fact that this is a project for evaluation, I did not create a compressed version for production.
 
 ### Prerequisites
