@@ -125,15 +125,21 @@ form.addEventListener("submit", function (e) {
         // Add new activity
         if(currentActivities < rowsNumberVal){
           addActivity(taskName,taskPriority,notDone);
+
+          //If we add element to the taskTable isAdd will rise up
+          isAdd++;
+
           currentActivities++;
         }
-
 
         // If the site has already reached the maximum number of activities
         else {
         lastActivity = document.querySelector("tbody");
         lastActivity.removeChild(lastActivity.childNodes[rowsNumberVal]);
         addActivity(taskName,taskPriority,notDone);
+
+        //If we add element to the taskTable isAdd will rise up
+        isAdd++;
         }
 
         // Reset enterActivity and selectPriority values
