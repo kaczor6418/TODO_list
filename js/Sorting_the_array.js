@@ -75,6 +75,7 @@ function initSortElements(taskTable){
           if(tdB === "Low") tdB = 0;
         }
 
+        // Assumptions needed to sort the done/undone
         if (index === 2) {
           if(a.children[index].querySelector("svg path").classList.contains("Done")){
             tdA = 1;
