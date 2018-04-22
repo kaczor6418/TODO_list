@@ -93,8 +93,8 @@ form.addEventListener("submit", function (e) {
     // Checks the form is valid
   switch (field.type) {
     case "text":
-      isValid = isRepeated(taskName);
       isValid = isTooLong(field);
+      isValid = isRepeated(taskName);
       isValid = isEmpty(field);
     break;
     case "select-one":
