@@ -11,7 +11,7 @@ function initSortElements(taskTable){
     // Add onclick event to the thead taskTable
     ths[0].onclick = sortBy;
     ths[1].onclick = sortBy;
-    //ths[2].onclick = sortByTask;
+    ths[2].onclick = sortBy;
 }
 
     // Removes sorting mark from element of table
@@ -19,11 +19,6 @@ function initSortElements(taskTable){
       for (let i = 0; i < nodeList.length; i++) {
         nodeList[i].className = "";
       }
-    }
-
-    // If user adds a new activity into table this function will add activity to the sorting Table
-    function addTaskToSortingArray(task) {
-        trsArr.push(task);
     }
 
     // Conversion of a pseudo array into an array
@@ -78,6 +73,19 @@ function initSortElements(taskTable){
           if(tdB === "High") tdB = 2;
           if(tdB === "Medium") tdB = 1;
           if(tdB === "Low") tdB = 0;
+        }
+
+        if (index === 2) {
+          if(a.children[index].querySelector("svg path").classList.contains("Done")){
+            tdA = 1;
+          } else {
+            tdA = 0;
+          }
+          if(b.children[index].querySelector("svg path").classList.contains("Done")) {
+            tdB = 1;
+          } else {
+            tdB = 0;
+          }
         }
 
 

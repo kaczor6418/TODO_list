@@ -184,6 +184,9 @@ form.addEventListener("submit", function (e) {
         // Updating localStorage
         dataObjectUpdate();
 
+        // all activities currently on the website
+        currentActivities = (document.querySelectorAll("#taskTable tbody tr").length) - 1;
+
         // Add new activity
         if(currentActivities < rowsNumberVal){
           addActivity(taskName,taskPriority,notDone);
@@ -205,9 +208,6 @@ form.addEventListener("submit", function (e) {
         if(selectPriority.value !== ""){
           selectPriority.value = "";
         }
-
-        // Add task to the sorrting table
-        addTaskToSortingArray(document.querySelector("tbody tr:first-child"));
 
         // Reset background of activity and priority
         enterActivity.style.background = "#dcd9d0";

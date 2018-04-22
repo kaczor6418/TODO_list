@@ -1,10 +1,11 @@
 var rowsNumberVal = 5,    // Number of rows that we chose(default 5)
     currentPage = 1,      // Page we are currently on
-    allPages,
-    allActivities,        // All pages we have
+    allPages,             // All pages we have
+    allActivities,        // All activities we have
     currentActivities,    // All activities that already on website
     prevIndex,            // First index of prev table activity
     nextIndex;            // First index of next table activity
+
 // Render new activities
 function renderNewAcrivities(startIndex, end) {
   let counter = 0; // Make sure that we do not go beyond the scope of the site
@@ -29,7 +30,6 @@ function renderNewAcrivities(startIndex, end) {
           }
           return;
         }
-
           currentActivities ++;
           counter++;
 
