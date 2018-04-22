@@ -91,26 +91,29 @@ form.addEventListener("submit", function (e) {
         isValid = null;
 
     // Checks the form is valid
-    switch (field.type) {
-      case "text":
-        isValid = isEmpty(field);
-        isValid = isRepeated(taskName);
-        isValid = isTooLong(field);
-        break;
-      case "select-one":
-        isValid = isEmpty(field);
-        break;
-      default:
-    }
+  switch (field.type) {
+    case "text":
+      isValid = isRepeated(taskName);
+      isValid = isTooLong(field);
+      isValid = isEmpty(field);
+    break;
+    case "select-one":
+      isValid = isEmpty(field);
+    break;
+  default:
+}
 
     // Doesn't add activity if the validation rules are not met
     if (!isValid) {
       field.classList.add("error");
       errors.push(field.dataset.error);
+      enterActivity.style.background = "#ffc6c6";
+      selectPriority.style.background = "#ffc6c6";
     }else {
       field.classList.remove("error");
     }
   }
+
   // If an error exist, the background will change color
   if(errors.length) {
     enterActivity.style.background = "#ffc6c6";
