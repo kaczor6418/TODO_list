@@ -65,6 +65,11 @@ function isEmpty(field) {
   return field.value !== "";
 }
 
+// Checks the is the form field is not too long(max 35 signs)
+function isTooLong(field) {
+  return field.value.length < 36;
+}
+
 // Checks whether the activity has already been entered
 function isRepeated(task) {
   return (data.taskName.indexOf(task) === -1);
@@ -90,6 +95,7 @@ form.addEventListener("submit", function (e) {
       case "text":
         isValid = isEmpty(field);
         isValid = isRepeated(taskName);
+        isValid = isTooLong(field);
         break;
       case "select-one":
         isValid = isEmpty(field);
