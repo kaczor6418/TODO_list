@@ -58,7 +58,7 @@ function renderSelectedRowsNumber(data,startIndex) {
   currentActivities = 0;
 
   // Change current page number on website
-  pageOf(data, rowsNumberVal, currentPage);
+  pageOf();
 
   //  All activities we have added
   allActivities = data.taskName.length;
@@ -74,8 +74,8 @@ function renderSelectedRowsNumber(data,startIndex) {
 }
 
 // Change current page number on website
-function pageOf(data, rows, index) {
-  allPages = Math.ceil(data.taskName.length / rows);
+function pageOf() {
+  allPages = Math.ceil(data.taskName.length / rowsNumberVal);
 
 let substitution = document.querySelector("#page-of");
 
@@ -86,7 +86,7 @@ let substitution = document.querySelector("#page-of");
 }
 
 // Initializing next and prev buttons
-function initNextPrev(data){
+function initNextPrev(){
 
   var button = document.querySelectorAll("#next-prev svg"), // Next and prev buttons
       rowsNumber = document.querySelector("#rows-per-page");
@@ -98,7 +98,7 @@ function initNextPrev(data){
       rowsNumber.addEventListener("click", function (e) {
           let oldRowsNumberVal = rowsNumberVal;
           rowsNumberVal = parseInt(document.querySelector("#rows-per-page").value, 10);
-          pageOf(data,rowsNumberVal, currentPage);
+          pageOf();
 
           currentActivities = (document.querySelectorAll("#taskTable tbody tr").length) - 1;
 

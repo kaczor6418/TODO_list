@@ -114,16 +114,22 @@ function addActivity(activity, priority, isDone) {
 
         if(currentActivities < rowsNumberVal){
           if (data.taskName.length > currentActivities) {
-            let newTask = currentPage*currentActivities - currentActivities;
+            let newTask = data.taskName.length - currentPage*currentActivities;
             console.log(newTask);
             addActivity(data.taskName[newTask],data.taskPriority[newTask],data.state[newTask]);
           }
           currentActivities++;
         }
 
+        // Update x of y pageOf after remove item
+        pageOf();
+
         // Delete activity from taskTable
         activityTable.removeChild(toRemove);
       },false);
+
+      // Update x of y pageOf after add item
+      pageOf();
 
 // Add new activity to the website
       cell1.innerHTML = activity;
