@@ -67,12 +67,14 @@ function isEmpty(field) {
 
 // Checks the is the form field is not too long(max 35 signs)
 function isTooLong(field) {
-  return field.value.length < 36;
+  if(field.value.length < 36) return true;
+  return false;
 }
 
 // Checks whether the activity has already been entered
 function isRepeated(task) {
-  return (data.taskName.indexOf(task) === -1);
+  if (data.taskName.indexOf(task) === -1) return true;
+  return false;
 }
 
 // Add click event for add activity
@@ -87,14 +89,16 @@ form.addEventListener("submit", function (e) {
 // Checks the form has been completed
   for (let i = 0; i < fields.length; i++) {
     let field = fields[i],
-        isValid = null;
+        isValid = true,
+        isValid1 = true,
+        isValid2 = true;
 
     // Checks the form is valid
   switch (field.type) {
     case "text":
-      isValid = isTooLong(field);
-      isValid = isRepeated(taskName);
       isValid = isEmpty(field);
+      isValid1 = isTooLong(field);
+      isValid2 = isRepeated(taskName);
     break;
     case "select-one":
       isValid = isEmpty(field);
@@ -103,7 +107,7 @@ form.addEventListener("submit", function (e) {
 }
 
     // Doesn't add activity if the validation rules are not met
-    if (!isValid) {
+    if (!isValid || !isValid1 || !isValid2) {
       field.classList.add("error");
       errors.push(field.dataset.error);
       enterActivity.style.background = "#ffc6c6";
