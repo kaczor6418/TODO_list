@@ -19,8 +19,7 @@ var notDone = '<svg class="checkBox" width="30" height="30" xmlns="http://www.w3
 renderTodoList();
 
 // Copy of the current task list
-var copyOfCurrentTasks = document.querySelector("tbody");
-copyOfCurrentTasks = copyOfCurrentTasks.querySelectorAll("tr");
+var copyOfCurrentTasks = document.querySelectorAll("tbody tr");
 
 // Initializing sorting array
 initSortElements(copyOfCurrentTasks);
@@ -51,6 +50,7 @@ let rowsPerPage = document.querySelector("#rows-per-page").value;
           return;
         }
 
+    // Add activity from data to the task table
     addActivity(renderActivity, renderPriority, renderState);
   }
 }
@@ -111,8 +111,10 @@ function addActivity(activity, priority, isDone) {
         // Updating localStorage
         dataObjectUpdate();
 
+        // Reduces the number of tasks currently on the page
         currentActivities--;
 
+        // Delete activity from taskTable
         activityTable.removeChild(toRemove);
       },false);
 
@@ -128,6 +130,7 @@ function isEmpty(field) {
   return field.value !== "";
 }
 
+// Checks whether the activity has already been entered
 function isRepeated(task) {
   return (data.taskName.indexOf(task) === -1);
 }
@@ -185,7 +188,11 @@ form.addEventListener("submit", function (e) {
         if(currentActivities < rowsNumberVal){
           addActivity(taskName,taskPriority,notDone);
           currentActivities++;
-        }else {
+        }
+
+
+        // If the site has already reached the maximum number of activities
+        else {
         lastActivity = document.querySelector("tbody");
         lastActivity.removeChild(lastActivity.childNodes[rowsNumberVal]);
         addActivity(taskName,taskPriority,notDone);
@@ -202,6 +209,7 @@ form.addEventListener("submit", function (e) {
         // Add task to the sorrting table
         addTaskToSortingArray(document.querySelector("tbody tr:first-child"));
 
+        // Reset background of activity and priority
         enterActivity.style.background = "#dcd9d0";
         selectPriority.style.background = "#dcd9d0";
   }
