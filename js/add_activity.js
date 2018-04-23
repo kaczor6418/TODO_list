@@ -1,5 +1,5 @@
 var isAdd = 0; // If we add element to the taskTable isAdd will rise up
-
+var minued = 1;
 // Adds a new activity to the TODOlist
 function addActivity(activity, priority, isDone) {
   var activityTable = document.querySelector("tbody"),
@@ -55,19 +55,33 @@ function addActivity(activity, priority, isDone) {
         // If we remove an element from the table, we want to add a new one which is not now on the site
         if(currentActivities <= rowsNumberVal){
 
-          // if we added some item to the page
-          if (data.taskName.length >= currentActivities && isAdd !== 0) {
-            let newTask = data.taskName.length - currentPage*currentActivities;
-            console.log("not added");
-            addActivity(data.taskName[newTask],data.taskPriority[newTask],data.state[newTask]);
+            // if we added some item to the page and we are on the first page
+            if (data.taskName.length >= currentActivities && isAdd !== 0 && currentPage === 1) {
+              let newTask = data.taskName.length - currentPage*currentActivities;
+              console.log("not added");
+              addActivity(data.taskName[newTask],data.taskPriority[newTask],data.state[newTask]);
+            }else {
+              let newTask = currentPage*currentActivities;
+              if(data.taskName.length < rowsNumberVal){
+                activityTable.removeChild(toRemove);
+                return;
+              }
+              if(newTask === data.taskName.length) newTask = 0;
+              if (currentPage !== 1 && allPages-currentPage <= 0) {
+                activityTable.removeChild(toRemove);
+                newTask = newTask - (currentActivities+minued);
+                addActivity(data.taskName[newTask],data.taskPriority[newTask],data.state[newTask]);
+                minued++;
+                return;
+              }
+              if (currentPage !== 1 && (allPages-currentPage >= 1)) {
+                newTask = currentPage*currentActivities - 1;
+                addActivity(data.taskName[newTask],data.taskPriority[newTask],data.state[newTask]);
+                activityTable.removeChild(toRemove);
+                return;
+              }
+              addActivity(data.taskName[newTask],data.taskPriority[newTask],data.state[newTask]);
           }
-
-          // If we have not added any item to the site
-          if (data.taskName.length >= currentActivities && isAdd === 0) {
-          let newTask = currentPage*currentActivities - 1;
-          console.log("added");
-          addActivity(data.taskName[newTask],data.taskPriority[newTask],data.state[newTask]);
-        }
       }
 
         // Update x of y pageOf after remove item
@@ -77,12 +91,12 @@ function addActivity(activity, priority, isDone) {
         activityTable.removeChild(toRemove);
       },false);
 
-      // Update x of y pageOf after add item
-      pageOf();
-
       // Add new activity to the website
       cell1.innerHTML = activity;
       cell2.innerHTML = priority;
       cell3.innerHTML = isDone;
       cell4.innerHTML = deleTask;
+
+      // Update x of y pageOf after add item
+      pageOf();
 }
