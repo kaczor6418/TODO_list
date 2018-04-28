@@ -27,4 +27,4 @@ For example Google Chrome, Firefox ...
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](https://rem.mit-license.org/) for details
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/kaczor6418/TODO_list/blob/master/LICENSE) for details
