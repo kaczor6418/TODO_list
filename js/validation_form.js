@@ -107,8 +107,8 @@ form.addEventListener("submit", function (e) {
     if (!isValid || !isValid1 || !isValid2) {
       field.classList.add("error");
       errors.push(field.dataset.error);
-      enterActivity.style.background = "#55D1C8";
-      selectPriority.style.background = "#55D1C8";
+      enterActivity.style.background = "rgba(189, 9, 9, 0.44)";
+      selectPriority.style.background = "rgba(189, 9, 9, 0.44)";
     }else {
       field.classList.remove("error");
     }
@@ -116,8 +116,8 @@ form.addEventListener("submit", function (e) {
 
   // If an error exist, the background will change color
   if(errors.length) {
-    enterActivity.style.background = "#55D1C8";
-    selectPriority.style.background = "#55D1C8";
+    enterActivity.style.background = "rgba(189, 9, 9, 0.44)";
+    selectPriority.style.background = "rgba(189, 9, 9, 0.44)";
   }else {
 
         // Save activity and priority in data

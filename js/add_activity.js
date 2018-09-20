@@ -4,7 +4,6 @@ var minued = 1;
 function addActivity(activity, priority, isDone) {
   var activityTable = document.querySelector("tbody"),
       row = activityTable.insertRow(0);
-      console.log("adding");
   let cell1 = row.insertCell(0), // Activity
       cell2 = row.insertCell(1), // Priority
       cell3 = row.insertCell(2); // State of activity
@@ -37,7 +36,6 @@ function addActivity(activity, priority, isDone) {
 
 // Add click event for removing activity(whether the task is done or not)
       cell4.addEventListener("click", function (e) {
-        console.log("usun");
         let toRemove = this.parentNode;
 
         // Delete activity from data.completed

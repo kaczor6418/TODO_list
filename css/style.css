@@ -49,7 +49,7 @@ form button[type='submit'] {
     height: 3em;
     float: right;
     border: none;
-    background:  #45A29E  ;
+    background:  #45A29E;
     padding-top: 0.75em;
     transition: background 0.5s ease;
     cursor: pointer;
@@ -61,7 +61,7 @@ form button:hover{
 }
 
 form input[type="text"].error, select.error {
-    border-color: #66FCF1;
+    border-color: #FF0D0D;
 }
 
 #taskTable{
@@ -86,11 +86,25 @@ form input[type="text"].error, select.error {
   text-align: left;
 }
 
+#taskTable thead th {
+  transition: color 0.5s ease;
+}
+
+#taskTable thead th:hover {
+  color: #45A29E;
+}
+
+#taskTable thead th:last-child:hover {
+  cursor: pointer;
+  width: 7%;
+}
+
 #taskTable thead th:first-child {
   width: 60%;
 }
 
 #taskTable thead th:last-child {
+  cursor: pointer;
   width: 7%;
 }
 
