@@ -1,4 +1,8 @@
-const template: string = `<h2>Hello</h2>`;
+const template: string = `<main>
+    <header>
+        <kk-task-form></kk-task-form>
+    </header>
+</main>`;
 
 export class ToDo extends HTMLElement {
     shadowRoot!: ShadowRoot;
